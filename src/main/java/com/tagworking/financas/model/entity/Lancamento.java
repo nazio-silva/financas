@@ -17,15 +17,23 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
+import com.tagworking.financas.model.enums.StatusLancamentos;
+import com.tagworking.financas.model.enums.TipoLancamentos;
+
+import lombok.Builder;
+import lombok.Data;
+
 @Entity
 @Table(name="lancamento", schema="minhasfincancas")
+@Data
+@Builder
 public class Lancamento {
 	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name="descricao")
 	private String descricao;
 	

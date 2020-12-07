@@ -1,4 +1,4 @@
-package com.tagworking.financas.model.entity;
+package com.tagworking.financas.model.enums;
 
 public enum StatusLancamentos {
 	PENDENTE,
