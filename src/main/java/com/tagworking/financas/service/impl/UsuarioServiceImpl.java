@@ -1,13 +1,20 @@
 package com.tagworking.financas.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tagworking.financas.exception.ReagraNegocioException;
 import com.tagworking.financas.model.entity.Usuario;
 import com.tagworking.financas.model.repository.UsuarioRepository;
 import com.tagworking.financas.service.UsuarioService;
 
+
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 	
 	private UsuarioRepository repository;
 
+	@Autowired
 	public UsuarioServiceImpl(UsuarioRepository repository) {
 		super();
 		this.repository = repository;
@@ -29,6 +36,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public void validarEmail(String email) {
 		// TODO Auto-generated method stub
 		
+		boolean existe = repository.existsByEmail(email);
+		
+		if(existe) {
+			throw new ReagraNegocioException("Já existe um usuário cadastrado com esse E-amil!!");
+		}
+				
 	}
 
 }
